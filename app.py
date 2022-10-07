@@ -32,8 +32,6 @@ filters.setup(dp)
 
 WEBAPP_HOST = "127.0.0.0"
 WEBAPP_PORT = int(os.environ.get("PORT", 5000))
-user_message = 'Пользователь'
-admin_message = 'Админ'
 
 
 @dp.message_handler(IsUser(), commands='start')
@@ -53,40 +51,9 @@ async def cmd_start_user(message: types.Message):
     await message.answer('Выберите пункт главного меню, который вас интересует👇', reply_markup=markup)
 
 
-# @dp.message_handler(IsUser(), commands='test')
-# async def test_(message: types.Message):
-#     driver = get_open_browser('d', 's')
-#     driver = set_cookies(driver, '9876146123')
-#     time.sleep(10)
-#     image = get_qr(driver)
-#     print(image.split(',')[1][:100])
-#     await message.answer('ready')
-#     try:
-#         print(1)
-#         await message.answer_photo(photo=base64.b64decode(image.split(',')[1]), caption=f'photo')
-#     except:
-#         pass
-#     try:
-#         print(2)
-#         await message.answer_photo(photo=base64.b64decode(image), caption=f'photo')
-#     except:
-#         pass
-#
-#
-# def get_qr(driver):
-#     el = driver.find_elements(By.CLASS_NAME, 'delivery-qr__code')
-#     for i in el:
-#         try:
-#             res = i.get_attribute('src')
-#             return res
-#         except:
-#             pass
-
-
 @dp.message_handler(IsAdmin(), commands='start')
 async def cmd_start_admin(message: types.Message):
     print(message.text)
-
     await message.answer('🤖 Я бот. Режим админа', reply_markup=admin_menu_markup())
 
 
@@ -98,7 +65,6 @@ async def cmd_start_admin(message: types.Message):
 @dp.message_handler(IsNotAllowedUser(), commands='start')
 async def cmd_start_admin(message: types.Message):
     print(message.text)
-
     await message.answer('🤖 Я бот. Но у вас нет доступа')
 
 
