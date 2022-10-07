@@ -25,7 +25,7 @@ async def process_balance(message: Message, state: FSMContext):
     await message.answer(f'💰Баланс: {balance_}\nДоступные выкупы: {available_buyouts}\n'
                          f'Доступные отзывы: {available_reviews}\n____________\n'
                          'Приглашайте друзей и получайте 5% с каждой их покупки!\n'
-                         '🔗Ваша уникальная инвайт-ссылка на ToTop bot: '
+                         '🔗Ваша уникальная инвайт-ссылка на WB bot: '
                          f'https://t.me/wbforsellersbot?start={cid}', reply_markup=markup)
 
 
