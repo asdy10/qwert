@@ -110,7 +110,6 @@ async def on_shutdown():
 
 if __name__ == '__main__':
     if "HEROKU" in list(os.environ.keys()):
-
         executor.start_webhook(
             dispatcher=dp,
             webhook_path=config.WEBHOOK_PATH,
@@ -120,8 +119,6 @@ if __name__ == '__main__':
             host=WEBAPP_HOST,
             port=WEBAPP_PORT,
         )
-
     else:
-
         executor.start_polling(dp, on_startup=on_startup, skip_updates=False)
 
