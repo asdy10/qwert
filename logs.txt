@@ -1,0 +1,4 @@
+INFO:root:#####START#####
+INFO:aiogram.dispatcher.dispatcher:Start polling.
+INFO:root:#####START#####
+INFO:aiogram.dispatcher.dispatcher:Start polling.
