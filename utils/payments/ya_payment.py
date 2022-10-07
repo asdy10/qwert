@@ -17,7 +17,7 @@ async def create_link_for_payment(receiver, label, summa):
 
 
 async def check_payment(label, token, value):
-    return True
+    #return True
     client = Client(token)
     history = client.operation_history(label=label)
     try:
