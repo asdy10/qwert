@@ -109,7 +109,7 @@ def submit_markup():
 
 
 def payment_markup():
-    pay100_ = '🟢 100р'
+    pay100_ = '🟢 50р'
     pay200_ = '🟢 200р'
     pay500_ = '🟢 500р'
     pay1000_ = '🟢 1000р'
@@ -127,15 +127,16 @@ async def buyout_markup(cid):
     if b == 0 or r == 0:
         b, r = await get_b_r_price_default()
     b, r = int(b), int(r)
+    pay500_ = f'🟢 {1 * b}р, 1 шт'
     pay10_ = f'🟢 {10 * b}р, 10 шт'
     pay20_ = f'🟢 {20 * b}р, 20 шт'
     pay50_ = f'🟢 {50 * b}р, 50 шт'
     pay100_ = f'🟢 {100 * b}р, 100 шт'
     pay200_ = f'🟢 {200 * b}р, 200 шт'
-    pay500_ = f'🟢 {500 * b}р, 500 шт'
+
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add(pay10_, pay20_, pay50_)
-    markup.add(pay100_, pay200_, pay500_)
+    markup.add(pay500_, pay10_, pay20_)
+    markup.add(pay50_, pay100_, pay200_)
     markup.add(back_message)
     return markup
 
@@ -143,15 +144,18 @@ async def buyout_markup(cid):
 async def review_markup(cid):
     b, r = await get_b_r_price(cid)
     b, r = int(b), int(r)
+    if b == 0 or r == 0:
+        b, r = await get_b_r_price_default()
+    pay500_ = f'🟢 {1 * r}р, 1 шт'
     pay10_ = f'🟢 {10 * r}р, 10 шт'
     pay20_ = f'🟢 {20 * r}р, 20 шт'
     pay50_ = f'🟢 {50 * r}р, 50 шт'
     pay100_ = f'🟢 {100 * r}р, 100 шт'
     pay200_ = f'🟢 {200 * r}р, 200 шт'
-    pay500_ = f'🟢 {500 * r}р, 500 шт'
+
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add(pay10_, pay20_, pay50_)
-    markup.add(pay100_, pay200_, pay500_)
+    markup.add(pay500_, pay10_, pay20_)
+    markup.add(pay50_, pay100_, pay200_)
     markup.add(back_message)
     return markup
 
