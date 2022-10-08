@@ -44,7 +44,7 @@ async def cmd_start_user(message: types.Message):
         # except:
         #     ref = 0
         #b, r = await get_b_r_price_default()
-        await create_user(message.from_user.id, message.from_user.username, 20, 0, 0, 0, 1, 1, 5, 0)
+        await create_user(message.from_user.id, message.from_user.username, 20, 0, 0, 0, 0, 0, 5, 0)
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add(buyout, reviews)
     markup.add(balance, info)

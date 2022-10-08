@@ -1,6 +1,6 @@
 from aiogram.types import ReplyKeyboardMarkup
 
-from utils.db_get_info.get_set_info_db import get_b_r_price, get_addresses
+from utils.db_get_info.get_set_info_db import get_b_r_price, get_addresses, get_b_r_price_default
 
 back_message = '👈 Назад'
 confirm_message = '✅ Подтвердить'
@@ -124,6 +124,8 @@ def payment_markup():
 
 async def buyout_markup(cid):
     b, r = await get_b_r_price(cid)
+    if b == 0 or r == 0:
+        b, r = await get_b_r_price_default()
     b, r = int(b), int(r)
     pay10_ = f'🟢 {10 * b}р, 10 шт'
     pay20_ = f'🟢 {20 * b}р, 20 шт'
