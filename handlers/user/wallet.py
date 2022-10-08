@@ -26,7 +26,7 @@ async def process_balance(message: Message, state: FSMContext):
                          f'Доступные отзывы: {available_reviews}\n____________\n'
                          'Приглашайте друзей и получайте 5% с каждой их покупки!\n'
                          '🔗Ваша уникальная инвайт-ссылка на WB bot: '
-                         f'https://t.me/wbforsellersbot?start={cid}', reply_markup=markup)
+                         f'https://t.me/wbforsellersbot?start={cid}', reply_markup=markup, disable_web_page_preview=True)
 
 
 @dp.message_handler(IsUser(), text=back_message, state=BalanceState.start)
