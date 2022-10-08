@@ -115,12 +115,10 @@ def save_image(url):
 
 
 def insert_row(ws, buyout, size=(200, 200)):
-    print(1)
     pid = buyout[2].split('/')[4]
     img = ''
     try:
         img = openpyxl.drawing.image.Image(get_img(f"product_images\\{pid}.png", size))
-        print(2)
     except:#no image
         try:
             url = get_image_url_product(pid)
@@ -132,19 +130,18 @@ def insert_row(ws, buyout, size=(200, 200)):
             print(e)
     if buyout[11] not in [0, None, '0']:
         #print(6, buyout[11])
-        print(3)
         rid = buyout[11].split(";")[0]
         receipt = buyout[11].split(";")[1]
     else:
         rid, receipt = 0, 0
-    print(4)
     seller = get_seller_info(pid)
     if not seller:
-        print(5)
+        print(1)
         r = get_ip_ooo(pid)
-        print(6)
         r['pid'] = pid
+        print(2)
         create_seller_info(r)
+        print(3)
         seller = get_seller_info(pid)
         print(7)
     pid, seller_name, ogrn, inn = seller
