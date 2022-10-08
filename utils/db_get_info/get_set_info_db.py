@@ -675,7 +675,7 @@ def get_product_image_pid(pid):
 def create_seller_info(arg: dict):
     pid = arg['pid']
     inn = arg['inn']
-    ogrn = arg['ogrn']
+    ogrn = 0
     name = arg['supplierName']
     db.query('INSERT INTO seller VALUES (?, ?, ?, ?)', (pid, name, ogrn, inn))
 
