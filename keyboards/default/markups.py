@@ -110,7 +110,7 @@ def submit_markup():
 
 def payment_markup():
     pay100_ = '🟢 50р'
-    pay200_ = '🟢 100р'
+    pay200_ = '🟢 200р'
     pay500_ = '🟢 500р'
     pay1000_ = '🟢 1000р'
     pay2000_ = '🟢 2000р'

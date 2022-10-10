@@ -203,7 +203,10 @@ async def process_make_buyout_confirm(message: Message, state: FSMContext):
         male = data['male']
     for i in range(count):
         bid = await agg.get_bid_no_used(cid, male)
-        idx = f'{cid}_{int(get_last_num_buyout_user(cid)) + 1}'
+        try:
+            idx = f'{cid}_{int(get_last_num_buyout_user(cid)) + 1}'
+        except:
+            idx = f'{cid}_1'
         await create_buyout(cid, idx, link, keywords, 1, address, datetime.today().strftime("%d.%m.%Y %H:%M:%S"), 'new', 0, bid)
         await agg.make_buyout_task(bid, idx, keywords, link, address, 1)
         old_x = await get_buyouts(cid)

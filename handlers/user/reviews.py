@@ -160,7 +160,7 @@ async def process_make_review_male(message: Message, state: FSMContext):
             await message.answer('Введите текст отзыва', reply_markup=cancel_markup())
             await ReviewsState.next()
     else:
-        await message.answer('Такого варианта нет')
+        await message.answer('Такого варианта нет', reply_markup=cancel_markup())
 
 
 @dp.message_handler(IsUser(), text=cancel_message, state=ReviewsState.review_text)
