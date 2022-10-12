@@ -120,7 +120,11 @@ class Aggregator:
                         set_status_of_buyout(idx, 'process')
                         # th = Thread(target=make_buyout_browser, args=(phone, keywords, link, address, count, proxy, user_agent, idx))
                         # th.start()
-                        await self.script_make_buyout(args)
+                        try:
+                            await self.script_make_buyout(args)
+                        except Exception as e:
+                            print(e)
+                            write_log(e)
                         self.__dict__['free_proxy'].append(pid)
                         print('script completed')
 
@@ -171,7 +175,11 @@ class Aggregator:
                         args['text'] = text
                         args['images'] = images
                         args['stars'] = stars
-                        await self.script_make_review(args)
+                        try:
+                            await self.script_make_review(args)
+                        except Exception as e:
+                            print(e)
+                            write_log(e)
                         self.__dict__['free_proxy'].append(pid)
 
     async def script_make_review(self, args_):
