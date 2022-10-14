@@ -31,7 +31,7 @@ from utils.notices.send_messages import check_new_messages
 filters.setup(dp)
 
 WEBAPP_HOST = "127.0.0.0"
-WEBAPP_PORT = int(os.environ.get("PORT", 5002))
+WEBAPP_PORT = int(os.environ.get("PORT", 5003))
 
 
 @dp.message_handler(IsUser(), commands='start')
