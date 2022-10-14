@@ -258,6 +258,7 @@ def like_random_products_on_page(driver, ids, id_product=''):
 
 def get_qr_for_pay(driver, idx, payment_type=0):
     #driver = go_to_cart(driver)
+    driver.execute_script("document.body.style.zoom='0.67'")
     actions = ActionChains(driver)
     #time.sleep(5)
     el2 = driver.find_element(By.CLASS_NAME, 'basket-order__b-oferta-access')

@@ -74,5 +74,6 @@ def get_open_browser(proxy, user_agent):
     #driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options, seleniumwire_options=options)
     driver.maximize_window()
     driver.get('https://google.com')
+    driver.execute_script("document.body.style.zoom='0.67'")
     time.sleep(1)
     return driver

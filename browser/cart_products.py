@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 
 
 def find_and_click_by_class_name(driver, class_name):
+    driver.execute_script("document.body.style.zoom='0.67'")
     actions = ActionChains(driver)
     m = driver.find_element(By.CLASS_NAME, class_name)
     actions.move_to_element(m).perform()
@@ -17,6 +18,7 @@ def find_and_click_by_class_name(driver, class_name):
 def go_to_cart(driver):
     driver.get('https://www.wildberries.ru/lk/basket')
     time.sleep(5)
+    driver.execute_script("document.body.style.zoom='0.67'")
     # for i in driver.find_elements(By.CLASS_NAME, 'navbar-pc__link'):
     #     try:
     #         if i.get_attribute('href') == 'https://www.wildberries.ru/lk/basket':
@@ -32,6 +34,7 @@ def go_to_cart(driver):
 
 def clear_cart(driver):
     actions = ActionChains(driver)
+    driver.execute_script("document.body.style.zoom='0.67'")
     k = driver.find_elements(By.CLASS_NAME, 'accordion__list-item')
     for i in k:
         actions.move_to_element(i).perform()
@@ -46,6 +49,7 @@ def clear_cart(driver):
 
 def change_count_in_cart(driver, count):
     actions = ActionChains(driver)
+    driver.execute_script("document.body.style.zoom='0.67'")
     k = driver.find_element(By.CLASS_NAME, 'accordion__list-item')
     actions.move_to_element(k).perform()
     time.sleep(1)
@@ -61,6 +65,7 @@ def change_count_in_cart(driver, count):
 
 def change_address_ship(driver, address):
     check = 0
+    driver.execute_script("document.body.style.zoom='0.67'")
     while check < 3:
         try:
             check += 1
@@ -114,10 +119,12 @@ def change_address_ship(driver, address):
             print('ERROR MAPS', e)
             driver.refresh()
             time.sleep(10)
+            driver.execute_script("document.body.style.zoom='0.67'")
     return driver, False
 
 
 def delete_all_address_ship(driver):
+    driver.execute_script("document.body.style.zoom='0.67'")
     for i in range(len(driver.find_elements(By.CLASS_NAME, 'history__menu'))):
         find_and_click_by_class_name(driver, 'history__menu')
         find_and_click_by_class_name(driver, 'address-delete')
@@ -126,6 +133,7 @@ def delete_all_address_ship(driver):
 
 def set_payment_method(driver):
     try:
+        driver.execute_script("document.body.style.zoom='0.67'")
         find_and_click_by_class_name(driver, 'j-btn-choose-pay')
         time.sleep(3)
         els = driver.find_elements(By.CLASS_NAME, 'methods-pay__text')
@@ -141,6 +149,7 @@ def set_payment_method(driver):
 
 def get_price(driver):
     try:
+        driver.execute_script("document.body.style.zoom='0.67'")
         el = driver.find_elements(By.CLASS_NAME, 'b-top__total')
         for i in el:
             try:
@@ -162,6 +171,7 @@ def get_price(driver):
 
 def check_is_product_in_cart(driver, id):
     try:
+        driver.execute_script("document.body.style.zoom='0.67'")
         el = driver.find_elements(By.CLASS_NAME, 'list-item__good')
         for i in el:
             try:
