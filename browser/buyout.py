@@ -119,7 +119,7 @@ def add_products_last(driver, keywords):
 
 def find_by_keywords(driver, keywords):
     try:
-        search = driver.find_element(By.CLASS_NAME, 'search-catalog__block')
+        search = driver.find_element(By.ID, 'searchInput') #By.CLASS_NAME, 'search-catalog__block'
         if not search.is_displayed():
             search = driver.find_element(By.CLASS_NAME, 'header__nav-icons').find_element(By.CLASS_NAME,
                 'j-search-catalog__input')
